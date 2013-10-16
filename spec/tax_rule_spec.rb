@@ -3,25 +3,27 @@ require 'spec_helper'
 module Salestax
   describe TaxRule do
     
-    before :all do
-      @exempt = ["books", "book", "chocolates", "chocolate", "pills", "medical"]
-    end
-
-    
     context "tax rule" do
       before :all do
-        @book_tax_rule = TaxRule.new("book")
-        @music_cd_tax_rule = TaxRule.new("music CD")
+        @tax_rule = TaxRule.new
+        @book = Goods.new("books")
+        @music_cd = Goods.new("music CD")
       end
 
+      it "#basic_tax_rate" do
+   #     @tax_rule.
+      end
+
+
+
       it "book has no tax " do
-        @book_tax_rule.is_exempt?.should ==  true
-        @book_tax_rule.is_imported?.should == false
+        @book.own_tax_rates.map(&:type).include?("import duty").should == false
+        @book.own_tax_rates.map(&:type).include?("basic tax").should == false
       end
 
       it "music has basic tax" do
-        @music_cd_tax_rule.is_exempt?.should ==false
-        @music_cd_tax_rule.is_imported?.should == false
+        @music_cd.own_tax_rates.map(&:type).include?("import duty").should == false
+        @music_cd.own_tax_rates.map(&:type).include?("basic tax").should == true
       end
     end
 

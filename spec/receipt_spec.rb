@@ -6,17 +6,13 @@ module Salestax
     before :each do
 
       @basket = Basket.new
-      no_rate = TaxRate.new("no tax", 0)
-      
-      @book = Goods.new("book", no_rate)
+      @book = Goods.new("book")
       @book_basket_item = BasketItem.new(@book, 1, 12.49)
-      
 
-      base_rate = TaxRate.new("basic tax", 0.1)
-      @music_cd = Goods.new("music CD", base_rate)
+      @music_cd = Goods.new("music CD")
       @music_cd_basket_item = BasketItem.new(@music_cd, 1, 14.99)
 
-      @chocolate = Goods.new("chocolate bar", no_rate)
+      @chocolate = Goods.new("chocolate bar")
       @chocolate_basket_item = BasketItem.new(@chocolate, 1, 0.85
 )
       @basket.add_item @book_basket_item

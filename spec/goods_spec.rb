@@ -6,21 +6,28 @@ module Salestax
     before :each do
       @tax_rates = [double("some taxs")]
       @tax_rate = double "some tax"
-      @goods = Goods.new("book", @tax_rates)
+      @goods = Goods.new("book")
     end
 
 
     context "#initiliaze" do
 
-      it "has many tax rates"  do
-        @goods.tax_rates.should == @tax_rates
-        @goods.tax_rates.instance_of?(Array).should be_true
-      end
+    end
 
-      it "have one tax rate" do
-        goods = Goods.new("book", @tax_rate)
-        goods.tax_rates.should == [@tax_rate]
-      end
+    it "#own_tax_rates, should return all taxs belongs to self" do
+        @books = Goods.new("book")
+
+
+    #  it "has many tax rates"  do
+     #   @goods.tax_rates.should == @tax_rates
+     #   @goods.tax_rates.instance_of?(Array).should be_true
+     # end
+
+     # it "have one tax rate" do
+      #  goods = Goods.new("book")
+     #   goods.tax_rates.should == [@tax_rate]
+    #  end
+
     end
 
   end

@@ -1,13 +1,13 @@
 module Salestax
   class Goods
-    attr_accessor :type
+    # attr_accessor :type
+    attr_accessor :name
     attr_reader :tax_rates
     
 
-    def initialize(type, one_or_some_tax_rates=[])
-      @type = type
-      @tax_rates = one_or_some_tax_rates.instance_of?(Array) ? 
-                   one_or_some_tax_rates : [one_or_some_tax_rates]
+    def initialize(name)
+      @name = name
+   #  @type = type
     end
 
 
@@ -19,6 +19,8 @@ module Salestax
       @tax_rates.delete tax_rate
     end
 
-    
+    def own_tax_rates 
+      TaxRule.new.rule_for(self).total_rates
+    end    
   end
 end

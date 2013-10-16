@@ -42,8 +42,7 @@ module Salestax
       basket_items = []
       parse do |results|
         results.each do |opts|
-          taxrule = TaxRule.new opts[1]
-          goods = Goods.new(opts[1],taxrule.total_rates )
+          goods = Goods.new(opts[1])
           basket_items << BasketItem.new(goods, opts[0], opts[2].to_f)
         end
       end

@@ -9,7 +9,7 @@ class  Receipt
     self.basket.items.map do |item|
       { 
         amount: item.amount, 
-        goods_name: item.goods.type,
+        goods_name: item.goods.name,
         price_after_tax: sprintf('%.2f', item.price_after_tax)
       }
     end

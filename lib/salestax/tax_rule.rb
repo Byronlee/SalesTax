@@ -8,11 +8,15 @@ module Salestax
     IMPORT_TAX_RATE = 0.05 
 
     # name or type ? 
-    def initialize goods_name
-      @goods_name = goods_name
+    def initialize
       @exempts = ["book", "chocolate", "pills", "medical"]
       @imports = ["import","imported"]
     end
+
+    def rule_for object
+      (@object = object) && self
+    end
+
 
     def basic_tax_rate
       TaxRate.new("basic tax",BASIC_TAX_RATE)
@@ -28,14 +32,17 @@ module Salestax
 
     def is_exempt?
       @exempts.each do | item | 
-        return true if @goods_name.include? item
+        return true if @object.name.include? item
       end
       false
     end
     
+    def 
+
+
     def is_imported?
       @imports.each do | item | 
-        return true if @goods_name.include? item
+        return true if @object.name.include? item
       end
       false
     end
@@ -48,3 +55,13 @@ module Salestax
     end
   end
 end
+
+
+
+
+a_rule = TaxRule new "a rule" do 
+   product_names: ["book", "cholate"] 
+   tax: {"base_tax": 0.01, "individual income tax": 0.02}
+   enda_
+rule.assert "book.."
+engine = TaxEngine.newengine.add a_rule
