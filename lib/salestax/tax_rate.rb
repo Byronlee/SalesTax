@@ -1,9 +1,9 @@
 module Salestax
   class TaxRate
-    attr_accessor :type, :rate
+    attr_accessor :type, :rate, :scope
 
-    def initialize type="basic sales", rate=0.10
-      @type, @rate = type, rate
+    def initialize type="no basic sales", rate=0.00, scope=[]
+      @type, @rate, @scope = type, rate, scope
     end
     
   end

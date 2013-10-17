@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+basic_tax: 
+  name: "basic tax"
+  rate:  0.10
+  scope: ["all"]
+
+no_basic_tax:
+  name: "no bisic tax"
+  rate: 0.00
+  scope: ["book","food","medical product"]
+
+import:
+  name: "import duty"
+  rate:  0.05
+  scope: ["import"]
+

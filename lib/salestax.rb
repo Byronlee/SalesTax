@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 require "salestax/version"
 require "salestax/rate_calculable"
 require "salestax/goods"
 require "salestax/tax_rate"
 require "salestax/basket"
 require "salestax/receipt"
-require "salestax/tax_rule"
+require "salestax/TaxRule/tax_rule_engine"
 require "salestax/calculator"
 require "salestax/basket_item"
 
@@ -35,7 +36,7 @@ module Salestax
       results = @data.map do |line|
         opts = REGULAR_ITEM.match(line).to_a[1..3]
       end
-      yield results
+      yield results # todo 给个判断是否给出块
     end
 
     def parse_items

@@ -21,6 +21,14 @@ module Salestax
 
     def own_tax_rates 
       TaxRule.new.rule_for(self).total_rates
+      # engine = Rule.engine.new
+      # engine.replace "",TaxRate.new
+      # engine.rule_for(self).total_rates
+      # engine.send(:basictax).change_rate 1.35
+      # engine.rule_for(self).total_rates
+
+
+
     end    
   end
 end
