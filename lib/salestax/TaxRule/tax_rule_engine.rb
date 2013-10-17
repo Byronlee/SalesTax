@@ -16,18 +16,16 @@ module Salestax
         (@object = object) && self
       end
       
-      # TODO 这个算法可以改善，当scope是all的时候特殊处理，这时就要处理特殊的情况了，如税之间的互斥性，有了，no basic税　就没有 0.01
+      # TODO 这个算法可以改善，当scope是all的时候特殊处理，这时就要处理特殊的情况了，
+      #如税之间的互斥性，有了，no basic税　就没有 0.01
       def execute_rule rule
         rule.scope.each do | item |
-          p @object.name
-          p item
           return true if @object.name.include? item
         end
         false
       end
       
       def filter
-        p @tax_rates
         @tax_rates.clone.select{|rule| p execute_rule(rule)}
       end
 
@@ -36,7 +34,6 @@ module Salestax
       end
 
       private 
-      
       def tax_rule_define_file
         begin 
           File.open(File.expand_path("./../tax_rule_define.yml", __FILE__))
